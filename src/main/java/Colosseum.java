@@ -73,9 +73,37 @@ public class Colosseum {
      */
     public static Pokemon buildPokemon() {
         Pokemon tempPokemon = new Pokemon();
+        System.out.println("Please name your Pokemon:");
+        tempPokemon.name = myScan.nextLine();
+        System.out.println("How many hit points will it have? (1-50)");
+        int hp = myScan.nextInt();
+        if (hp < 0 || hp > MAX_HIT_POINTS) {
+            System.out.println("Sorry. Hit points must be between 1 and 50:");
+        } else {
+            tempPokemon.hitPoints = hp;
+        }
+        System.out.println("Split fifty points between attack level and defense level.");
+        System.out.println("Enter your attack level (1-49):");
+        int atk = myScan.nextInt();
+        if (atk < 1 || atk > Pokemon.MAX_ATTACK) {
+            System.out.println("Sorry. The attack level must be between 1 and 49:");
+            atk = myScan.nextInt();
+        } else {
+            tempPokemon.attackLevel = atk;
+        }
+        System.out.println(
+                "Enter your defense level (1 - " + Integer.toString(Pokemon.MAX_ATTACK - tempPokemon.attackLevel) + ")");
+        int def = myScan.nextInt();
+        if (def < 1 || def > MAX_HIT_POINTS - Pokemon.MAX_ATTACK) {
+            System.out.println(
+                    "The defense level must be between 1 and "
+                            + Integer.toString(tempPokemon.attackLevel) + ")");
+            def = myScan.nextInt();
+        } else {
+            tempPokemon.defenseLevel = def;
+        }
         return tempPokemon;
     }
-
     /**
      * Prints who is ahead.
      * <p>

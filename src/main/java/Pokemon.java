@@ -25,7 +25,10 @@ public class Pokemon {
      * will end once hitPoints drops below 1.
      */
     int hitPoints;
-
+    /**
+     * Max attack level.
+     */
+    public final static int MAX_ATTACK = 49;
     /**
      * This Pokemon's attack level.
      * <p>
